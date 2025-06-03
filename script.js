@@ -1,8 +1,8 @@
-"use strict"
+"use strict";
 
 const rock = "rock";
-const paper = "paper"
-const scissors = "scissors"
+const paper = "paper";
+const scissors = "scissors";
 
 // Function that gets Computer choice
 const ComputerChoice = () => {
@@ -12,9 +12,10 @@ const ComputerChoice = () => {
     } else if (randomIndex === 1) {
         return paper;
     } else {
-        return scissors;}
+        return scissors;
+    }
 }
-console.log("Computer's choice is:", ComputerChoice() )
+console.log("Computer's choice is:", ComputerChoice() );
 
 // Function that gets Human choice
 const HumanChoice = () => {
@@ -29,4 +30,8 @@ const HumanChoice = () => {
         return UserChoice; 
     }
 }
-console.log("User's choice is:", HumanChoice() )
+console.log("User's choice is:", HumanChoice() );
+
+const humanScore = 0;
+const computerScore = 0;
+
