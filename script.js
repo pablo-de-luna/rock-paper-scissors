@@ -22,7 +22,7 @@ console.log("Computer's choice is:", ComputerChoice() )
     // IF it's valid...
     // RETURN valid choice "rock", "paper", or "scissors"
 
-function getHumanChoice() {
+const HumanChoice = () => {
     let UserChoice = prompt("Rock, paper or scissors, choose one:", "");
     UserChoice = UserChoice.toLowerCase();
         // console.log(UserChoice); 
@@ -30,8 +30,8 @@ function getHumanChoice() {
         UserChoice !== paper &&
         UserChoice !== scissors) { 
         alert("Invalid choice"); 
-    } else {
+    } else { 
         return UserChoice; 
     }
 }
-console.log( getHumanChoice() ) 
+console.log("User's choice is:", HumanChoice() )
