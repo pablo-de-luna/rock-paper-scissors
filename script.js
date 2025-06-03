@@ -17,5 +17,14 @@ function getComputerChoice() {
         return "scissors";
     }
 }
+// console.log("Computer's choice is:", getComputerChoice() )
 
-console.log( getComputerChoice() )
+// Ask user a choice
+// Convert prompt to lower case
+// Compare prompt to valid choices
+// Returns valid choice "rock", "paper", or "scissors"
+function getHumanChoice() {
+    const UserChoice = prompt("Rock, paper or scissors, choose one:", "");
+
+    
+}
