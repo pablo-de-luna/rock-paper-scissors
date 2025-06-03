@@ -4,24 +4,16 @@ const rock = "rock";
 const paper = "paper"
 const scissors = "scissors"
 
-// GENERATE random number from 0, 1 or 2
-// ASSIGN "rock", "paper" and "scissors" to each number
-    // IF 0 return "rock"
-    // IF 1 return "paper"
-    // IF 2 return "scissors"
-// RETURN a string from the 3 assigned
-function getComputerChoice() {
+const ComputerChoice = () => {
     const randomIndex = Math.floor(Math.random() * 3);
-    
     if (randomIndex === 0) {
         return rock;
     } else if (randomIndex === 1) {
         return paper;
     } else {
-        return scissors;
-    }
+        return scissors;}
 }
-console.log("Computer's choice is:", getComputerChoice() )
+console.log("Computer's choice is:", ComputerChoice() )
 
 // ASK user a choice
 // CONVERT prompt to lower case
@@ -33,12 +25,13 @@ console.log("Computer's choice is:", getComputerChoice() )
 function getHumanChoice() {
     let UserChoice = prompt("Rock, paper or scissors, choose one:", "");
     UserChoice = UserChoice.toLowerCase();
-        // console.log(UserChoice);  
-    if (UserChoice !== rock || paper || scissors) {
-        alert("Invalid choice");
+        // console.log(UserChoice); 
+    if (UserChoice !== rock &&
+        UserChoice !== paper &&
+        UserChoice !== scissors) { 
+        alert("Invalid choice"); 
     } else {
-        return console.log(UserChoice); 
+        return UserChoice; 
     }
 }
-
-console.log ( getHumanChoice() ); 
+console.log( getHumanChoice() ) 
