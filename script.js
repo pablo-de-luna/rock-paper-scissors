@@ -3,11 +3,13 @@
 // this function return the computer choice
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3); 
-    const choiceName =
-        randomNum === 0 ? "rock" :
-        randomNum === 1 ? "paper" :
-        "scissors";
-    return choiceName; 
+    if (randomNum === 0) {
+        return "rock";
+    } else if (randomNum === 1) {
+        return "paper";
+    } else {
+        return "scissors";
+    }
 }
 
 // Function that get Human choice in lower case
@@ -17,13 +19,12 @@ function getHumanChoice() {
 }
 // function that return VALID human choice, return "invalid" if it's not
 function humanChoiceValidation(choice) {
-    switch (choice) {
-        case "rock":
-        case "paper":
-        case "scissors":
-            return choice;
-        default:
-            return "invalid";
+    if (choice === "rock" ||
+        choice === "paper" ||
+        choice === "scissors") {
+        return choice;
+    } else {
+        return "invalid";
     }
 }
 
