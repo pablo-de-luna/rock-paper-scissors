@@ -12,12 +12,11 @@ function getComputerChoice() {
 
 // Function that get Human choice in lower case
 function getHumanChoice() {
-    let humanPrompt = prompt("Rock, paper or scissors, choose one:", "");
-    return humanPrompt.toLowerCase();
+    let input = prompt("Rock, paper or scissors, choose one:", "");
+    return humanChoiceValidation( input.toLowerCase() );
 }
-
-// function that return VALID human, return "invalid" if it's not
-function humanChoice(choice) {
+// function that return VALID human choice, return "invalid" if it's not
+function humanChoiceValidation(choice) {
     switch (choice) {
         case "rock":
         case "paper":
@@ -28,8 +27,8 @@ function humanChoice(choice) {
     }
 }
 
+console.log("Human has selected:", getHumanChoice() );
 console.log("Computer has selected:", getComputerChoice() );
-console.log("Human has selected:", humanChoice( getHumanChoice() ) );
 
 const humanScore = 0;
 const computerScore = 0;
@@ -45,4 +44,6 @@ const computerScore = 0;
         // SHOW message "Computer won this round"
         // RETURN computer score + 1
         
-function playRound() {}
+function playRound(humanChoice, computerChoice) {
+    
+}
