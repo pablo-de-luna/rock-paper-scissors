@@ -4,44 +4,58 @@ const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
 
-// Function that get Computer choice
+const randomIndex = () => { return Math.floor(Math.random() * 3); };
+const random = randomIndex()
+console.log(random);
+
 const computerChoice = () => {
-    const randomIndex = Math.floor(Math.random() * 3);
-    if (randomIndex === 0) {
-        return rock;
-    } else if (randomIndex === 1) {
-        return paper;
-    } else {
-        return scissors;
+    if (random === 0) {
+        console.log("rock");
+    } 
+    if (random === 1) {
+        console.log("paper");
     }
-}
-console.log("Computer's choice is:", computerChoice() );
+    if (random === 2) {
+        console.log("scissors");
+    }
+};
+
+computerChoice();
 
 // TODO : make this function two separated functions 
 // Function that gets Human choice
-const humanChoice = () => {
-    let UserChoice = prompt("Rock, paper or scissors, choose one:", "");
-    UserChoice = UserChoice.toLowerCase();
-        // console.log(UserChoice); 
-    if (UserChoice !== rock &&
-        UserChoice !== paper &&
-        UserChoice !== scissors) { 
-        alert("Invalid choice"); 
-    } else { 
-        return UserChoice; 
-    }
-}
-console.log("User's choice is:", humanChoice() );
+// const humanChoice = () => {
+//     let UserChoice = prompt("Rock, paper or scissors, choose one:", "");
+//     UserChoice = UserChoice.toLowerCase();
+//         // console.log(UserChoice); 
+//     if (UserChoice === rock ||
+//         UserChoice === paper ||
+//         UserChoice === scissors) { 
+//         return UserChoice;
+//     } else { 
+//         alert("Invalid choice"); 
+//     }
+// };
+// console.log("User's choice is:", humanChoice() );
 
-const humanScore = 0;
-const computerScore = 0;
+// const humanScore = 0;
+// const computerScore = 0;
 
-// GET human and computer choices 
-// ASSIGN numbers to rock, paper, scissors variables
-// COMPARE numbers to see who won the round
-// IF human won, call a function for this case
-// IF human computer, call a function for this case
-const playRound = () => {}
+// // GET human and computer choices 
+// // ASSIGN numbers to rock, paper, scissors variables
+// // COMPARE numbers to see who won the round
+// // IF human won, call a function for this case
+// // IF human computer, call a function for this case
+// // IF its a draw, display draw message
 
+// const playRound = (computerChoice, humanChoice) => {
+//     if (computerChoice > humanChoice) {
+//         // computer won function 
+//     } else if (computerChoice = humanChoice) {
+//         // its a draw
+//     } else {
+//         // human won function
+//     }
+// };
 
-playRound(com)
+// // playRound( computerChoice(), humanChoice() )
