@@ -1,26 +1,24 @@
 "use strict";
 
-const rock = "rock";
-const paper = "paper";
-const scissors = "scissors";
+// this function return number 0, 1 or 2
+function randomValue() {
+    return Math.floor(Math.random() * 3);
+}
+const computerChoiceValue = randomValue();
 
-const randomIndex = () => { return Math.floor(Math.random() * 3); };
-const random = randomIndex()
-console.log(random);
-
-const computerChoice = () => {
-    if (random === 0) {
-        console.log("rock");
-    } 
-    if (random === 1) {
-        console.log("paper");
+// this function return choice name as string
+function computerChoice() {
+    if (computerChoiceValue === 0) {
+        return "rock";
     }
-    if (random === 2) {
-        console.log("scissors");
+    if (computerChoiceValue === 1) {
+        return "paper";
     }
-};
-
-computerChoice();
+    if (computerChoiceValue === 2) {
+        return "scissors";
+    }
+}
+console.log("Computer choice is:", computerChoice() );
 
 // TODO : make this function two separated functions 
 // Function that gets Human choice
