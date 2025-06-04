@@ -7,35 +7,40 @@ function randomValue() {
 const computerChoiceValue = randomValue();
 
 // this function return choice name as string
-function computerChoice() {
-    if (computerChoiceValue === 0) {
+function computerChoice(choiceNum) {
+    if (choiceNum === 0) {
         return "rock";
     }
-    if (computerChoiceValue === 1) {
+    if (choiceNum === 1) {
         return "paper";
     }
-    if (computerChoiceValue === 2) {
+    if (choiceNum === 2) {
         return "scissors";
     }
 }
-console.log("Computer choice is:", computerChoice() );
 
-// TODO : make this function two separated functions 
-// Function that gets Human choice
-// const humanChoice = () => {
-//     let UserChoice = prompt("Rock, paper or scissors, choose one:", "");
-//     UserChoice = UserChoice.toLowerCase();
-//         // console.log(UserChoice); 
-//     if (UserChoice === rock ||
-//         UserChoice === paper ||
-//         UserChoice === scissors) { 
-//         return UserChoice;
-//     } else { 
-//         alert("Invalid choice"); 
-//     }
-// };
-// console.log("User's choice is:", humanChoice() );
+// Function that get Human choice in lower case
+function getHumanChoice() {
+    let humanPrompt = prompt("Rock, paper or scissors, choose one:", "");
+    humanPrompt = humanPrompt.toLowerCase();
+    return humanPrompt;
+}
 
+// function that validates the prompt and returns it or return invalid
+function humanChoice(prompt) {
+    switch (prompt) {
+        case "rock":
+        case "paper":
+        case "scissors":
+            return prompt;
+        default:
+            return "invalid";
+    }
+}
+
+console.log("Human choice is:", humanChoice( getHumanChoice() ) )
+console.log("Computer choice is:", computerChoice(computerChoiceValue) );
+ 
 // const humanScore = 0;
 // const computerScore = 0;
 
@@ -56,4 +61,4 @@ console.log("Computer choice is:", computerChoice() );
 //     }
 // };
 
-// // playRound( computerChoice(), humanChoice() )
+// playRound (computerChoice(), humanChoice
