@@ -28,14 +28,11 @@ function humanChoiceValidation(choice) {
     }
 }
 
-console.log("Human has selected:", getHumanChoice() );
-console.log("Computer has selected:", getComputerChoice() );
-
 const humanScore = 0;
 const computerScore = 0;
 
 // GET human and computer choice
-// CHECK if human choice defeat computer choice
+// CHECK if human choice beat computer choice
     // IF rock vs scissors or
     //    paper vs rock or
     //    scissors vs paper
@@ -46,5 +43,27 @@ const computerScore = 0;
         // RETURN computer score + 1
         
 function playRound(humanChoice, computerChoice) {
-    
+    if (humanChoice === "rock" && computerChoice === "scissors" ||
+        humanChoice === "paper" && computerChoice === "rock" ||
+        humanChoice === "scissors" && computerChoice === "paper") {
+        console.log(`You WIN!, ${humanChoice} beat ${computerChoice}`)
+        // return humanScore + 1;
+    } else if (humanChoice === computerChoice) {
+        console.log("It's a DRAW")
+    } else {
+        console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`)
+        // return computerScore + 1;
+    }
 }
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+console.log("human selection is =", humanSelection);
+console.log("computer selection is =", computerSelection);
+console.log("human score is =", humanScore);
+console.log("computer score is =", computerScore);
+
+// console.log( playRound() )
+
+playRound(humanSelection, computerSelection);
