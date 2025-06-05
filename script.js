@@ -27,12 +27,10 @@ function humanChoiceValidation(choice) {
         return "invalid";
     }
 }
-
-let humanScore = 0;
-let computerScore = 0;
         
 // Function that log who won / draw. And returns
 function playRound(humanChoice, computerChoice) {
+        roundCount += 1;
     if (humanChoice === "rock" && computerChoice === "scissors" ||
         humanChoice === "paper" && computerChoice === "rock" ||
         humanChoice === "scissors" && computerChoice === "paper") {
@@ -41,19 +39,41 @@ function playRound(humanChoice, computerChoice) {
     } else if (humanChoice === computerChoice) {
         console.log("It's a DRAW");
     } else if (humanChoice === "invalid") {
-        console.log(`INVALID INPUT, what's a ${humanSelection}`);
+        console.log("INVALID INPUT");
     } else {
         console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
         computerScore += 1;
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    if (roundCount === 6) {
+        console.log("GAME OVER");
+        return;
+    }
+    console.log("ROUND", roundCount);
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+}
+
+const fullGame = () => {
+    if (roundCount < 6) {
+        playGame();
+        fullGame();
+    } else {
+        return;
+    }
+}
+
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+let humanScore = 0;
+let computerScore = 0;
+let roundCount = 1;
 
 playRound(humanSelection, computerSelection);
+fullGame()
 
-// console.log("human choose =", humanSelection);
-// console.log("computer choose =", computerSelection);
 console.log("human score is =", humanScore);
 console.log("computer score is =", computerScore);
