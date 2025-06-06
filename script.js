@@ -54,7 +54,7 @@ function playGame() {
 }
 
 // Function that call playGame function 5 times
-function fullGame() {
+function repeatGame() {
     if (roundCount < 6) {
         playGame();
         fullGame();
