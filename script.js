@@ -1,22 +1,23 @@
 "use strict";
 
-function getComputerChoice() {
+const getComputerChoice = () => {
     const randomNum = Math.floor(Math.random() * 3); 
     if (randomNum === 0) {
         return 'rock';
-    } else if (randomNum === 1) {
+    }
+    if (randomNum === 1) {
         return 'paper';
     } else {
         return 'scissors';
     }
 }
 
-function getHumanChoice() {
-    let input = prompt(`ROUND ${roundCount + 1} | Rock, paper or scissors`);
+const getHumanChoice = () => {
+    const input = prompt(`ROUND ${roundCount + 1} | Rock, paper or scissors`);
     return validateHumanChoice( input.toLowerCase() );
 }
 
-function validateHumanChoice(choice) {
+const validateHumanChoice = (choice) => {
     if (choice === 'rock' ||
         choice === 'paper' ||
         choice === 'scissors') {
@@ -26,7 +27,11 @@ function validateHumanChoice(choice) {
     }
 }
 
-function playRound(humanChoice, computerChoice) { 
+let humanScore = 0;
+let computerScore = 0;
+let roundCount = 0;
+
+const playRound = (humanChoice, computerChoice) => { 
     setupRound();
     
     if (humanChoice === 'invalid') {
@@ -41,21 +46,21 @@ function playRound(humanChoice, computerChoice) {
         humanChoice === 'paper' && computerChoice === 'rock' ||
         humanChoice === 'scissors' && computerChoice === 'paper') {
         console.log(`You WIN!, ${humanChoice} beat ${computerChoice}`);
-        humanScore++;
+        humanScore += 1;
     } else {
         console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
-        computerScore++;
+        computerScore += 1;
     }
 }
 
-function setupRound() {
+const setupRound = () => {
     console.clear();
     roundCount += 1;
     console.log( 'ROUND', roundCount.toString() );
 }
 
 // Call playRound function 5 times
-function playGame() {
+const playGame = function playGame() {
     if (roundCount < 5) {
         playRound( getHumanChoice(), getComputerChoice() );
         playGame();
@@ -63,10 +68,6 @@ function playGame() {
         return;
     }
 }
-
-let humanScore = 0;
-let computerScore = 0;
-let roundCount = 0;
 
 alert('ROCK, PAPER SCISSORS!')
 playGame();
