@@ -49,16 +49,11 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-// Function that call new choices from choice functions and call playRound
-function playGame() {
-        playRound(getHumanChoice(), getComputerChoice());
-}
-
 // Function that call playGame function 5 times
-function repeatGame() {
+function playGame() {
     if (roundCount < 5) {
+        playRound( getHumanChoice(), getComputerChoice() );
         playGame();
-        repeatGame();
     } else {
         return;
     }
@@ -71,7 +66,7 @@ let roundCount = 0;
 
 // Game sequence
 alert("ROCK, PAPER SCISSORS!")
-repeatGame();
+playGame();
 console.clear();
 
 if (humanScore > computerScore) {
