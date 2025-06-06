@@ -14,7 +14,7 @@ function getComputerChoice() {
 
 // Function that get Human choice in lower case
 function getHumanChoice() {
-    let input = prompt("Rock, paper or scissors, choose one:", "");
+    let input = prompt(`ROUND ${roundCount + 1} | Rock, paper or scissors`);
     return humanChoiceValidation( input.toLowerCase() );
 }
 // Function that return VALID human choice, return "invalid" if it's not
@@ -29,8 +29,10 @@ function humanChoiceValidation(choice) {
 }
         
 // Function that log who won / draw. And returns
-function playRound(humanChoice, computerChoice) {  
+function playRound(humanChoice, computerChoice) { 
+    console.clear();
     roundCount += 1;
+    console.log( "ROUND", roundCount.toString() );
 
     if (humanChoice === "rock" && computerChoice === "scissors" ||
         humanChoice === "paper" && computerChoice === "rock" ||
@@ -49,15 +51,14 @@ function playRound(humanChoice, computerChoice) {
 
 // Function that call new choices from choice functions and call playRound
 function playGame() {
-        console.log("ROUND", roundCount);
-        playRound(getHumanChoice(), getComputerChoice());       
+        playRound(getHumanChoice(), getComputerChoice());
 }
 
 // Function that call playGame function 5 times
 function repeatGame() {
-    if (roundCount < 6) {
+    if (roundCount < 5) {
         playGame();
-        fullGame();
+        repeatGame();
     } else {
         return;
     }
@@ -66,18 +67,20 @@ function repeatGame() {
 // Score and round count
 let humanScore = 0;
 let computerScore = 0;
-let roundCount = 1;
+let roundCount = 0;
 
 // Game sequence
 alert("ROCK, PAPER SCISSORS!")
-fullGame();
-console.log("human score is =", humanScore);
-console.log("computer score is =", computerScore);
+repeatGame();
+console.clear();
 
 if (humanScore > computerScore) {
-    console.log("YOU WIN")
+    console.log("YOU WIN THE GAME")
 } else if (humanScore === computerScore) {
-    console.log("DRAW")
+    console.log("IT'S A DRAW")
 } else {
-    console.log("YOU LOSE");
+    console.log("YOU LOSE THE GAME");
 }
+
+console.log(`You got ${ humanScore.toString() } wins`);
+console.log(`Computer got ${ computerScore.toString() } wins`);
