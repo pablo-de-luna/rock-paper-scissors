@@ -3,11 +3,11 @@
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3); 
     if (randomNum === 0) {
-        return "rock";
+        return 'rock';
     } else if (randomNum === 1) {
-        return "paper";
+        return 'paper';
     } else {
-        return "scissors";
+        return 'scissors';
     }
 }
 
@@ -17,37 +17,41 @@ function getHumanChoice() {
 }
 
 function validateHumanChoice(choice) {
-    if (choice === "rock" ||
-        choice === "paper" ||
-        choice === "scissors") {
+    if (choice === 'rock' ||
+        choice === 'paper' ||
+        choice === 'scissors') {
         return choice;
     } else {
-        return "invalid";
+        return 'invalid';
     }
 }
 
 function playRound(humanChoice, computerChoice) { 
     setupRound();
     
-    if (humanChoice === "rock" && computerChoice === "scissors" ||
-        humanChoice === "paper" && computerChoice === "rock" ||
-        humanChoice === "scissors" && computerChoice === "paper") {
+    if (humanChoice === 'invalid') {
+        console.log('INVALID INPUT, It\'s a DRAW');
+        return;
+    }
+    if (humanChoice === computerChoice) {
+        console.log('It\'s a DRAW');
+        return;
+    }
+    if (humanChoice === 'rock' && computerChoice === 'scissors' ||
+        humanChoice === 'paper' && computerChoice === 'rock' ||
+        humanChoice === 'scissors' && computerChoice === 'paper') {
         console.log(`You WIN!, ${humanChoice} beat ${computerChoice}`);
-        humanScore += 1;
-    } else if (humanChoice === computerChoice) {
-        console.log("It's a DRAW");
-    } else if (humanChoice === "invalid") {
-        console.log("INVALID INPUT, It's a DRAW");
+        humanScore++;
     } else {
         console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
-        computerScore += 1;
+        computerScore++;
     }
 }
 
 function setupRound() {
     console.clear();
     roundCount += 1;
-    console.log( "ROUND", roundCount.toString() );
+    console.log( 'ROUND', roundCount.toString() );
 }
 
 // Call playRound function 5 times
@@ -64,16 +68,16 @@ let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
-alert("ROCK, PAPER SCISSORS!")
+alert('ROCK, PAPER SCISSORS!')
 playGame();
 console.clear();
 
 if (humanScore > computerScore) {
-    console.log("YOU WIN THE GAME")
+    console.log('YOU WIN THE GAME')
 } else if (humanScore === computerScore) {
-    console.log("IT'S A DRAW")
+    console.log('IT\'S A DRAW')
 } else {
-    console.log("YOU LOSE THE GAME");
+    console.log('YOU LOSE THE GAME');
 }
 
 console.log(`You got ${ humanScore.toString() } wins`);
