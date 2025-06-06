@@ -1,6 +1,5 @@
 "use strict";
 
-// Function that return the computer choice
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3); 
     if (randomNum === 0) {
@@ -12,12 +11,11 @@ function getComputerChoice() {
     }
 }
 
-// Function that get Human choice in lower case
 function getHumanChoice() {
     let input = prompt(`ROUND ${roundCount + 1} | Rock, paper or scissors`);
     return validateHumanChoice( input.toLowerCase() );
 }
-// Function that return VALID human choice, return "invalid" if it's not
+
 function validateHumanChoice(choice) {
     if (choice === "rock" ||
         choice === "paper" ||
@@ -27,8 +25,7 @@ function validateHumanChoice(choice) {
         return "invalid";
     }
 }
-        
-// Function that log who won / draw. And returns
+
 function playRound(humanChoice, computerChoice) { 
     console.clear();
     roundCount += 1;
@@ -49,7 +46,7 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-// Function that call playGame function 5 times
+// Call playRound function 5 times
 function playGame() {
     if (roundCount < 5) {
         playRound( getHumanChoice(), getComputerChoice() );
@@ -59,12 +56,10 @@ function playGame() {
     }
 }
 
-// Score and round count
 let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
-// Game sequence
 alert("ROCK, PAPER SCISSORS!")
 playGame();
 console.clear();
