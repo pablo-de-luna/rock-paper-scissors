@@ -29,8 +29,9 @@ function humanChoiceValidation(choice) {
 }
         
 // Function that log who won / draw. And returns
-function playRound(humanChoice, computerChoice) {
-        roundCount += 1;
+function playRound(humanChoice, computerChoice) {  
+    roundCount += 1;
+
     if (humanChoice === "rock" && computerChoice === "scissors" ||
         humanChoice === "paper" && computerChoice === "rock" ||
         humanChoice === "scissors" && computerChoice === "paper") {
@@ -39,25 +40,21 @@ function playRound(humanChoice, computerChoice) {
     } else if (humanChoice === computerChoice) {
         console.log("It's a DRAW");
     } else if (humanChoice === "invalid") {
-        console.log("INVALID INPUT");
+        console.log("INVALID INPUT, It's a DRAW");
     } else {
         console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
         computerScore += 1;
     }
 }
 
+// Function that call new choices from choice functions and call playRound
 function playGame() {
-    if (roundCount === 6) {
-        console.log("GAME OVER");
-        return;
-    }
-    console.log("ROUND", roundCount);
-    humanSelection = getHumanChoice();
-    computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
+        console.log("ROUND", roundCount);
+        playRound(getHumanChoice(), getComputerChoice());       
 }
 
-const fullGame = () => {
+// Function that call playGame function 5 times
+function fullGame() {
     if (roundCount < 6) {
         playGame();
         fullGame();
@@ -66,14 +63,21 @@ const fullGame = () => {
     }
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+// Score and round count
 let humanScore = 0;
 let computerScore = 0;
 let roundCount = 1;
 
-playRound(humanSelection, computerSelection);
-fullGame()
-
+// Game sequence
+alert("ROCK, PAPER SCISSORS!")
+fullGame();
 console.log("human score is =", humanScore);
 console.log("computer score is =", computerScore);
+
+if (humanScore > computerScore) {
+    console.log("YOU WIN")
+} else if (humanScore === computerScore) {
+    console.log("DRAW")
+} else {
+    console.log("YOU LOSE");
+}
