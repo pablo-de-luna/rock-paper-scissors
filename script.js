@@ -15,10 +15,10 @@ function getComputerChoice() {
 // Function that get Human choice in lower case
 function getHumanChoice() {
     let input = prompt(`ROUND ${roundCount + 1} | Rock, paper or scissors`);
-    return humanChoiceValidation( input.toLowerCase() );
+    return validateHumanChoice( input.toLowerCase() );
 }
 // Function that return VALID human choice, return "invalid" if it's not
-function humanChoiceValidation(choice) {
+function validateHumanChoice(choice) {
     if (choice === "rock" ||
         choice === "paper" ||
         choice === "scissors") {
