@@ -27,10 +27,8 @@ function validateHumanChoice(choice) {
 }
 
 function playRound(humanChoice, computerChoice) { 
-    console.clear();
-    roundCount += 1;
-    console.log( "ROUND", roundCount.toString() );
-
+    setupRound();
+    
     if (humanChoice === "rock" && computerChoice === "scissors" ||
         humanChoice === "paper" && computerChoice === "rock" ||
         humanChoice === "scissors" && computerChoice === "paper") {
@@ -44,6 +42,12 @@ function playRound(humanChoice, computerChoice) {
         console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
         computerScore += 1;
     }
+}
+
+function setupRound() {
+    console.clear();
+    roundCount += 1;
+    console.log( "ROUND", roundCount.toString() );
 }
 
 // Call playRound function 5 times
