@@ -60,7 +60,7 @@ const setupRound = () => {
     console.log( 'ROUND', roundCount.toString() );
 };
 
-// Call playRound function 5 times
+// Repeat itself the number of rounds declared in numberOfRounds const
 const playGame = function playGame() {
     if (roundCount < numberOfRounds) {
         playRound( getHumanChoice(), getComputerChoice() );
