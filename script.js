@@ -10,14 +10,14 @@ const getComputerChoice = () => {
     } else {
         return 'scissors';
     }
-}
+};
 
 const getHumanChoice = () => {
     const input = prompt(`ROUND ${roundCount + 1} | Rock, paper or scissors`);
     return validateHumanChoice( input.toLowerCase() );
 }
 
-const validateHumanChoice = (choice) => {
+const validateHumanChoice = choice => {
     if (choice === 'rock' ||
         choice === 'paper' ||
         choice === 'scissors') {
@@ -25,8 +25,9 @@ const validateHumanChoice = (choice) => {
     } else {
         return 'invalid';
     }
-}
+};
 
+const numberOfRounds = 5;
 let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
@@ -51,23 +52,23 @@ const playRound = (humanChoice, computerChoice) => {
         console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
         computerScore += 1;
     }
-}
+};
 
 const setupRound = () => {
     console.clear();
     roundCount += 1;
     console.log( 'ROUND', roundCount.toString() );
-}
+};
 
 // Call playRound function 5 times
 const playGame = function playGame() {
-    if (roundCount < 5) {
+    if (roundCount < numberOfRounds) {
         playRound( getHumanChoice(), getComputerChoice() );
         playGame();
     } else {
         return;
     }
-}
+};
 
 alert('ROCK, PAPER SCISSORS!')
 playGame();
