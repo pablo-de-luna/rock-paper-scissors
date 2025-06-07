@@ -67,8 +67,6 @@ const playGame = function playGame() {
   if (roundCount < numberOfRounds) {
     playRound( getHumanChoice(), getComputerChoice() );
     playGame();
-  } else {
-    return;
   }
 };
 
