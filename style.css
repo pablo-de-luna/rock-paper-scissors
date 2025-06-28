@@ -9,30 +9,46 @@ html {
 }
 
 body {
-    background: rgb(218, 182, 0);
+    background: rgb(241, 226, 180);
     font-family: Helvetica, sans-serif;
 }
 
-h1 {
+#title-text {
     text-align: center;
-    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    margin: 100px 0 0;
+}
+
+#title-text img {
+    width: 900px;
 }
 
 #battleground {
     height: 400px;
-    margin: 10px;
+    padding: 40px 0 0;
     display: flex;
+    justify-content: center;
+}
+
+#hand-left-space img{
+    height: 300px;
+    width: 480px;
+}
+
+#hand-right-space img{
+    height: 300px;
+    width: 480px;
+    transform: scaleX(-1);
 }
 
 #vs {
-    font-size: 100px;
-    color:#e4dbac;
-    margin: auto;
+    font-size: 300px;
+    font-weight: bolder;
+    color:#6da4a9;    
     justify-content: center;
     align-content: center;
-    text-shadow: 0 5px 0 rgb(160, 110, 9),
-    5px 20px 50px rgb(160, 110, 9),
-    7px 5px 10px rgb(160, 110, 9);
+    margin: 0 -140px;
 }
 
 #selection-buttons {
@@ -45,14 +61,14 @@ button {
     transition: all 400ms;
     font-size: larger;
     font-weight: bolder;
-    color: rgb(169, 140, 90);
+    color: rgb(183, 155, 106);
     border: 0;
     border-radius: 10px;
-    background-color: #e4dbac;
-    box-shadow: 0 15px 0 rgb(190, 153, 54), /* */
-                0 15px 1px 2px rgb(48, 35, 13),
-                10px 10px 30px rgb(194, 129, 0),
-                10px 10px 10px rgb(161, 110, 7);
+    background-color: #fff6de;
+    box-shadow: 0 15px 0 rgb(200, 190, 154), /* */
+                0 15px 1px 2px rgb(101, 77, 36),
+                10px 10px 30px rgb(179, 144, 69),
+                10px 10px 10px rgb(130, 95, 53);
     height: 50px;
     width: 160px;
     margin: 0 10px;
@@ -65,10 +81,10 @@ button:hover {
     color: rgb(44, 85, 142);
     border: 0;
     border-radius: 10px;
-    background-color: #e8deae;
+    background-color: #fff6de;
     box-shadow: 0 5px 0 rgb(9, 92, 160),
                 0 5px 0 2px rgb(0, 0, 0),
-                5px 5px 10px rgb(161, 110, 7);
+                5px 5px 10px rgb(130, 95, 53);
     height: 50px;
     width: 160px;
     margin: 0 10px 0;
