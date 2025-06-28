@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+    background: rgb(199, 156, 0);
+    color: rgb(0, 0, 0);
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 40vh;
+}

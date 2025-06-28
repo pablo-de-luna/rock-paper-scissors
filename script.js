@@ -57,7 +57,6 @@ const playRound = (humanChoice, computerChoice) => {
 };
 
 const setupRound = () => {
-  console.clear();
   roundCount += 1;
   console.log( 'ROUND', roundCount.toString() );
 };
@@ -70,9 +69,7 @@ const playGame = function playGame() {
   }
 };
 
-alert('ROCK, PAPER SCISSORS!')
-playGame();
-console.clear();
+// playGame();
 
 if (humanScore > computerScore) {
   console.log('YOU WIN THE GAME')
