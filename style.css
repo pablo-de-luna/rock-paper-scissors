@@ -26,10 +26,13 @@ h1 {
 
 #vs {
     font-size: 100px;
-    color:rgb(0, 0, 0);
+    color:#e4dbac;
     margin: auto;
     justify-content: center;
     align-content: center;
+    text-shadow: 0 5px 0 rgb(160, 110, 9),
+    5px 20px 50px rgb(160, 110, 9),
+    7px 5px 10px rgb(160, 110, 9);
 }
 
 #selection-buttons {
@@ -41,10 +44,10 @@ h1 {
 button {
     font-size: larger;
     font-weight: bolder;
-    color: rgb(151, 124, 1);
+    color: rgb(169, 140, 90);
     border: 0;
     border-radius: 10px;
-    background-color: #e8deae;
+    background-color: #e4dbac;
     box-shadow: 0px 15px 0px rgb(160, 110, 9),
         10px 10px 50px rgb(194, 129, 0),
         10px 10px 10px rgb(161, 110, 7);
@@ -56,7 +59,7 @@ button {
 button:hover {
     font-size: larger;
     font-weight: bolder;
-    color: rgb(151, 124, 1);
+    color: rgb(142, 44, 44);
     border: 0;
     border-radius: 10px;
     background-color: #e8deae;
