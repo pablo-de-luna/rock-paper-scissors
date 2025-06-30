@@ -24,17 +24,31 @@ rockButton.addEventListener("click", () => {
     console.log("rock");  
 });
 
-const leftHand = document.querySelector("#hand-left-space > img");
+const vsText = document.createElement("div");
+vsText.setAttribute("id", "vs");
+vsText.textContent = "VS";
 
-rockButton.addEventListener("mouseover", () => {
-    leftHand.src = "./assets/images/rock-hand.png"
+const battleground = document.querySelector("#battleground");
+const humanHand = document.querySelector("#hand-left-space > img")
+const computerHandSpace = document.querySelector("#hand-right-space");
+
+const selectionButtons = document.querySelector("#selection-buttons");
+
+selectionButtons.addEventListener("mouseover", (event) => {
+    let target = event.target;
+
+    switch(target.id) {
+        case "rock-button":
+           humanHand.src = "./assets/images/rock-hand.png"
+           break;
+        case "paper-button":
+           humanHand.src = "./assets/images/paper-hand.png"
+           break;
+        case "scissors-button":
+           humanHand.src = "./assets/images/scissors-hand.png"
+           break;
+    }
+
+    battleground.insertBefore(vsText, computerHandSpace);
+    humanHand.setAttribute("style", "visibility: visible;");
 });
-
-paperButton.addEventListener("mouseover", () => {
-    leftHand.src = "./assets/images/paper-hand.png"
-});
-
-scissorsButton.addEventListener("mouseover", () => {
-    leftHand.src = "./assets/images/scissors-hand.png"
-});
-

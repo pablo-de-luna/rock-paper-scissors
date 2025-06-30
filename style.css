@@ -31,22 +31,30 @@ body {
     justify-content: center;
 }
 
-#hand-left-space img{
+#hand-left-space img {
+    visibility: hidden;
     height: 300px;
     width: 480px;
 }
 
 #hand-right-space img{
+    visibility: hidden;
     height: 300px;
     width: 480px;
     transform: scaleX(-1);
 }
 
+#hand-left-space {z-index: 1;}
+
+#vs:hover {
+    color: antiquewhite;
+}
+
 #vs {
-    z-index: -1;
+    z-index: 0;
     font-size: 300px;
     font-weight: bolder;
-    color:#6da4a9;    
+    color: #6da4a9;
     justify-content: center;
     align-content: center;
     margin: 0 -140px;
