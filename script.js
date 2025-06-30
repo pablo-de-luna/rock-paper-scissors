@@ -1,15 +1,9 @@
 "use strict";
 
+const computerChoices = ["rock", "paper", "scissors"];
+
 const getComputerChoice = () => {
-    const randomNum = Math.floor(Math.random() * 3); 
-    if (randomNum === 0) {
-        return "rock";
-    }
-    if (randomNum === 1) {
-        return "paper";
-    } else {
-        return "scissors";
-    }
+    return computerChoices[Math.floor(Math.random() * 3)];
 };
 
 const getHumanChoice = () => {
@@ -17,73 +11,23 @@ const getHumanChoice = () => {
     return validateHumanChoice( input.toLowerCase() );
 }
 
-const validateHumanChoice = choice => {
-    if (choice === "rock" ||
-        choice === "paper" ||
-        choice === "scissors") {
-        return choice;
-    } else {
-        return "invalid";
-    }
-};
+const rockButton = document.querySelector("#rock-button");
+const paperButton = document.querySelector("#paper-button");
+const scissorsButton = document.querySelector("#scissors-button");
 
 const numberOfRounds = 5;
 let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
-const playRound = (humanChoice, computerChoice) => { 
-    setupRound();
-  
-    if (humanChoice === "invalid") {
-        console.log("INVALID INPUT, It\'s a DRAW");
-        return;
-    }
-    if (humanChoice === computerChoice) {
-        console.log("It\'s a DRAW");
-        return;
-    }
-    if (
-        (humanChoice === "rock" && computerChoice === "scissors")
-        || (humanChoice === "paper" && computerChoice === "rock")
-        || (humanChoice === "scissors" && computerChoice === "paper")
-    ) {
-        console.log(`You WIN!, ${humanChoice} beat ${computerChoice}`);
-        humanScore += 1;
-    } else {
-        console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
-        computerScore += 1;
-    }
-};
+rockButton.addEventListener("click", () => {
+    console.log("rock");  
+});
 
-const setupRound = () => {
-    roundCount += 1;
-    console.log( "ROUND", roundCount.toString() );
-};
+paperButton.addEventListener("click", () => {
+    console.log("paper");  
+});
 
-// Repeat itself the number of rounds declared in numberOfRounds const
-const playGame = function playGame() {
-    if (roundCount < numberOfRounds) {
-        playRound( getHumanChoice(), getComputerChoice() );
-        playGame();
-    }
-};
-
-// playGame();
-
-// if (humanScore > computerScore) {
-//     console.log("YOU WIN THE GAME")
-// } else if (humanScore === computerScore) {
-//     console.log("IT\'S A DRAW")
-// } else {
-//     console.log("YOU LOSE THE GAME");
-// }
-
-// console.log(`You got ${ humanScore.toString() } wins`);
-// console.log(`Computer got ${ computerScore.toString() } wins`);
-
-const rockButton = document.querySelector("#rock-button");
-const paperButton = document.querySelector("#paper-button");
-const scissorsButton = document.querySelector("#scissors-button");
-
-
+scissorsButton.addEventListener("click", () => {
+    console.log("scissors");  
+});
