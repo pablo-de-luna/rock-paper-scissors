@@ -3,12 +3,12 @@
 const getComputerChoice = () => {
     const randomNum = Math.floor(Math.random() * 3); 
     if (randomNum === 0) {
-        return 'rock';
+        return "rock";
     }
     if (randomNum === 1) {
-        return 'paper';
+        return "paper";
     } else {
-        return 'scissors';
+        return "scissors";
     }
 };
 
@@ -18,12 +18,12 @@ const getHumanChoice = () => {
 }
 
 const validateHumanChoice = choice => {
-    if (choice === 'rock' ||
-        choice === 'paper' ||
-        choice === 'scissors') {
+    if (choice === "rock" ||
+        choice === "paper" ||
+        choice === "scissors") {
         return choice;
     } else {
-        return 'invalid';
+        return "invalid";
     }
 };
 
@@ -35,18 +35,18 @@ let roundCount = 0;
 const playRound = (humanChoice, computerChoice) => { 
     setupRound();
   
-    if (humanChoice === 'invalid') {
-        console.log('INVALID INPUT, It\'s a DRAW');
+    if (humanChoice === "invalid") {
+        console.log("INVALID INPUT, It\'s a DRAW");
         return;
     }
     if (humanChoice === computerChoice) {
-        console.log('It\'s a DRAW');
+        console.log("It\'s a DRAW");
         return;
     }
     if (
-        (humanChoice === 'rock' && computerChoice === 'scissors')
-        || (humanChoice === 'paper' && computerChoice === 'rock')
-        || (humanChoice === 'scissors' && computerChoice === 'paper')
+        (humanChoice === "rock" && computerChoice === "scissors")
+        || (humanChoice === "paper" && computerChoice === "rock")
+        || (humanChoice === "scissors" && computerChoice === "paper")
     ) {
         console.log(`You WIN!, ${humanChoice} beat ${computerChoice}`);
         humanScore += 1;
@@ -58,7 +58,7 @@ const playRound = (humanChoice, computerChoice) => {
 
 const setupRound = () => {
     roundCount += 1;
-    console.log( 'ROUND', roundCount.toString() );
+    console.log( "ROUND", roundCount.toString() );
 };
 
 // Repeat itself the number of rounds declared in numberOfRounds const
@@ -71,13 +71,19 @@ const playGame = function playGame() {
 
 // playGame();
 
-if (humanScore > computerScore) {
-    console.log('YOU WIN THE GAME')
-} else if (humanScore === computerScore) {
-    console.log('IT\'S A DRAW')
-} else {
-    console.log('YOU LOSE THE GAME');
-}
+// if (humanScore > computerScore) {
+//     console.log("YOU WIN THE GAME")
+// } else if (humanScore === computerScore) {
+//     console.log("IT\'S A DRAW")
+// } else {
+//     console.log("YOU LOSE THE GAME");
+// }
 
-console.log(`You got ${ humanScore.toString() } wins`);
-console.log(`Computer got ${ computerScore.toString() } wins`);
+// console.log(`You got ${ humanScore.toString() } wins`);
+// console.log(`Computer got ${ computerScore.toString() } wins`);
+
+const rockButton = document.querySelector("#rock-button");
+const paperButton = document.querySelector("#paper-button");
+const scissorsButton = document.querySelector("#scissors-button");
+
+
