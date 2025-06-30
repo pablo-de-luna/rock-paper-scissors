@@ -6,11 +6,6 @@ const getComputerChoice = () => {
     return computerChoices[Math.floor(Math.random() * 3)];
 };
 
-const getHumanChoice = () => {
-    const input = prompt(`ROUND ${roundCount + 1} | Rock, paper or scissors`);
-    return validateHumanChoice( input.toLowerCase() );
-}
-
 const numberOfRounds = 5;
 let humanScore = 0;
 let computerScore = 0;
@@ -19,20 +14,15 @@ let roundCount = 0;
 const rockButton = document.querySelector("#rock-button");
 const paperButton = document.querySelector("#paper-button");
 const scissorsButton = document.querySelector("#scissors-button");
-
-rockButton.addEventListener("click", () => {
-    console.log("rock");  
-});
-
-const vsText = document.createElement("div");
-vsText.setAttribute("id", "vs");
-vsText.textContent = "VS";
-
 const battleground = document.querySelector("#battleground");
 const humanHand = document.querySelector("#hand-left-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
-
 const selectionButtons = document.querySelector("#selection-buttons");
+const playButton = document.querySelector("#play-button");
+
+const centralText = document.createElement("div");
+centralText.setAttribute("id", "central-text");
+centralText.textContent = "MAKE YOUR CHOICE!";
 
 selectionButtons.addEventListener("mouseover", (event) => {
     let target = event.target;
@@ -48,7 +38,18 @@ selectionButtons.addEventListener("mouseover", (event) => {
            humanHand.src = "./assets/images/scissors-hand.png"
            break;
     }
+});
 
-    battleground.insertBefore(vsText, computerHandSpace);
+selectionButtons.addEventListener("mouseover", () => {
+    centralText.textContent = "VS";
+    centralText.setAttribute(
+        "style", "font-size: 300px; color: #6da4a9;"
+    );
     humanHand.setAttribute("style", "visibility: visible;");
+});
+
+playButton.addEventListener("click", () => {
+    battleground.removeChild(playButton);
+    battleground.insertBefore(centralText, computerHandSpace);
+    selectionButtons.setAttribute("style", "visibility: visible;");
 });
