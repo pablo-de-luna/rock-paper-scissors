@@ -1,15 +1,19 @@
 "use strict";
 
 const menu = document.querySelector("#menu");
+const playButton = document.querySelector("#play-button");
 const roundButtons = document.querySelector("#round-buttons");
-const selectionButtons = document.querySelector("#selection-buttons");
 const battleground = document.querySelector("#battleground");
+const roundInfo = document.querySelector("#round-info");
+const playerScoreInfo = document.querySelector("#player-score");
+const computerScoreInfo = document.querySelector("#computer-score");
 const rockButton = document.querySelector("#rock-button");
 const paperButton = document.querySelector("#paper-button");
 const scissorsButton = document.querySelector("#scissors-button");
-const humanHand = document.querySelector("#hand-left-space > img")
+const battleButtons = document.querySelector("#battle-buttons");
+const selectionButtons = document.querySelector("#selection-buttons");
+const playerHand = document.querySelector("#hand-left-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
-const playButton = document.querySelector("#play-button");
 
 const centralText = document.createElement("div");
 centralText.setAttribute("id", "central-text");
@@ -18,31 +22,32 @@ centralText.textContent = "MAKE YOUR CHOICE!";
 playButton.addEventListener("click", () => {
     menu.remove()
     battleground.insertBefore(centralText, computerHandSpace);
-    selectionButtons.setAttribute("style", "visibility: visible;");
+    battleButtons.setAttribute("style", "visibility: visible;");
+    roundInfo.textContent = "ROUND 1";
 });
 
-selectionButtons.addEventListener("mouseover", (event) => {
+selectionButtons.addEventListener("click", (event) => {
     let targetButton = event.target;
 
     switch(targetButton.id) {
         case "rock-button":
-           humanHand.src = "./assets/images/rock-hand.png"
+           playerHand.src = "./assets/images/rock-hand.png"
            break;
         case "paper-button":
-           humanHand.src = "./assets/images/paper-hand.png"
+           playerHand.src = "./assets/images/paper-hand.png"
            break;
         case "scissors-button":
-           humanHand.src = "./assets/images/scissors-hand.png"
+           playerHand.src = "./assets/images/scissors-hand.png"
            break;
     }
 });
 
-selectionButtons.addEventListener("mouseover", () => {
+selectionButtons.addEventListener("click", () => {
+    playerScoreInfo.textContent = "PLAYER: 0"
+    computerScoreInfo.textContent = "COMPUTER: 0"
     centralText.textContent = "VS";
-    centralText.setAttribute(
-        "style", "font-size: 300px; color: #6da4a9;"
-    );
-    humanHand.setAttribute("style", "visibility: visible;");
+    centralText.setAttribute("style", "font-size: 300px; color: #6da4a9;");
+    playerHand.setAttribute("style", "visibility: visible;");
 });
 
 const computerChoices = ["rock", "paper", "scissors"];
@@ -52,7 +57,7 @@ const getComputerChoice = () => {
 };
 
 const numberOfRounds = 5;
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
