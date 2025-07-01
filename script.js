@@ -56,4 +56,9 @@ let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
+// Temporary dispatchEvent to preview game
+let clickEvent = new MouseEvent("click");
+playButton.dispatchEvent(clickEvent);
 
+let mouseoverEvent = new MouseEvent("mouseover");
+selectionButtons.dispatchEvent(mouseoverEvent);
