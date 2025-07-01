@@ -19,6 +19,8 @@ const humanHand = document.querySelector("#hand-left-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
 const selectionButtons = document.querySelector("#selection-buttons");
 const playButton = document.querySelector("#play-button");
+const menu = document.querySelector("#menu");
+const roundButtons = document.querySelector("#round-buttons");
 
 const centralText = document.createElement("div");
 centralText.setAttribute("id", "central-text");
@@ -49,7 +51,7 @@ selectionButtons.addEventListener("mouseover", () => {
 });
 
 playButton.addEventListener("click", () => {
-    battleground.removeChild(playButton);
+    menu.remove()
     battleground.insertBefore(centralText, computerHandSpace);
     selectionButtons.setAttribute("style", "visibility: visible;");
 });
