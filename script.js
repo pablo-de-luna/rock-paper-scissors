@@ -1,35 +1,30 @@
 "use strict";
 
-const computerChoices = ["rock", "paper", "scissors"];
-
-const getComputerChoice = () => {
-    return computerChoices[Math.floor(Math.random() * 3)];
-};
-
-const numberOfRounds = 5;
-let humanScore = 0;
-let computerScore = 0;
-let roundCount = 0;
-
+const menu = document.querySelector("#menu");
+const roundButtons = document.querySelector("#round-buttons");
+const selectionButtons = document.querySelector("#selection-buttons");
+const battleground = document.querySelector("#battleground");
 const rockButton = document.querySelector("#rock-button");
 const paperButton = document.querySelector("#paper-button");
 const scissorsButton = document.querySelector("#scissors-button");
-const battleground = document.querySelector("#battleground");
 const humanHand = document.querySelector("#hand-left-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
-const selectionButtons = document.querySelector("#selection-buttons");
 const playButton = document.querySelector("#play-button");
-const menu = document.querySelector("#menu");
-const roundButtons = document.querySelector("#round-buttons");
 
 const centralText = document.createElement("div");
 centralText.setAttribute("id", "central-text");
 centralText.textContent = "MAKE YOUR CHOICE!";
 
-selectionButtons.addEventListener("mouseover", (event) => {
-    let target = event.target;
+playButton.addEventListener("click", () => {
+    menu.remove()
+    battleground.insertBefore(centralText, computerHandSpace);
+    selectionButtons.setAttribute("style", "visibility: visible;");
+});
 
-    switch(target.id) {
+selectionButtons.addEventListener("mouseover", (event) => {
+    let targetButton = event.target;
+
+    switch(targetButton.id) {
         case "rock-button":
            humanHand.src = "./assets/images/rock-hand.png"
            break;
@@ -50,8 +45,15 @@ selectionButtons.addEventListener("mouseover", () => {
     humanHand.setAttribute("style", "visibility: visible;");
 });
 
-playButton.addEventListener("click", () => {
-    menu.remove()
-    battleground.insertBefore(centralText, computerHandSpace);
-    selectionButtons.setAttribute("style", "visibility: visible;");
-});
+const computerChoices = ["rock", "paper", "scissors"];
+
+const getComputerChoice = () => {
+    return computerChoices[Math.floor(Math.random() * 3)];
+};
+
+const numberOfRounds = 5;
+let humanScore = 0;
+let computerScore = 0;
+let roundCount = 0;
+
+
