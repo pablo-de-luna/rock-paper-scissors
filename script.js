@@ -12,6 +12,7 @@ const paperButton = document.querySelector("#paper-button");
 const scissorsButton = document.querySelector("#scissors-button");
 const battleButtons = document.querySelector("#battle-buttons");
 const selectionButtons = document.querySelector("#selection-buttons");
+const fightButton = document.querySelector("#fight-button");
 const playerHand = document.querySelector("#hand-left-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
 
@@ -50,6 +51,13 @@ selectionButtons.addEventListener("click", () => {
     playerHand.setAttribute("style", "visibility: visible;");
 });
 
+fightButton.addEventListener("click", () => {
+    centralText.setAttribute(
+        "style", "transition: all 2s; font-size: 100px; margin: 0 -250px;"
+    )
+    centralText.textContent = "YOU LOSE";
+});
+
 const computerChoices = ["rock", "paper", "scissors"];
 
 const getComputerChoice = () => {
@@ -64,5 +72,5 @@ let roundCount = 0;
 // Temporary dispatchEvent to preview game
 let clickEvent = new MouseEvent("click");
 
-// playButton.dispatchEvent(clickEvent);
-// selectionButtons.dispatchEvent(clickEvent);
+playButton.dispatchEvent(clickEvent);
+selectionButtons.dispatchEvent(clickEvent);
