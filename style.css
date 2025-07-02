@@ -8,8 +8,11 @@ html {
     box-sizing: inherit;
 }
 
+body {
+    background: rgb(237, 227, 198);
+}
+
 body, button {
-    background: rgb(241, 226, 180);
     font-family: Bowlby One SC, Roboto, Arial;
 }
 
@@ -21,7 +24,7 @@ body, button {
 }
 
 #title-text img {
-    width: 900px;
+    width: 1100px;
 }
 
 #battleground {
@@ -87,7 +90,7 @@ body, button {
 
 .normal-button-style button {
     font-size: larger;
-    color: rgb(183, 155, 106);
+    color: rgb(172, 159, 138);
     height: 50px;
     width: 160px;
     margin: 0 10px;
@@ -104,10 +107,10 @@ body, button {
     border: 0;
     border-radius: 10px;
     background-color: #fff6de;
-    box-shadow: 0 15px 0 rgb(200, 190, 154),
+    box-shadow: 0 15px 0 rgb(187, 173, 144),
             0 15px 1px 2px rgb(101, 77, 36),
-            10px 10px 30px rgb(179, 144, 69),
-            10px 10px 10px rgb(130, 95, 53);
+            10px 10px 30px rgb(179, 159, 118),
+            10px 10px 10px rgb(136, 106, 69);
 }
 
 #play-button:hover,
@@ -166,12 +169,12 @@ body, button {
 
 #round-info {
     font-size: 2.5em;
-    color: #6e5b43;
+    color: #7a6e60;
 }
 
 .score-info-style {
     font-size: 1.5em;
-    color: #b49b66;
+    color: #9a9180;
 }
 
 
