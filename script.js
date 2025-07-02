@@ -46,7 +46,7 @@ selectionButtons.addEventListener("click", () => {
     playerScoreInfo.textContent = "PLAYER: 0"
     computerScoreInfo.textContent = "COMPUTER: 0"
     centralText.textContent = "VS";
-    centralText.setAttribute("style", "font-size: 250px; color: #6da4a9;");
+    centralText.setAttribute("style", "font-size: 200px; color: #6da4a9;");
     playerHand.setAttribute("style", "visibility: visible;");
 });
 
