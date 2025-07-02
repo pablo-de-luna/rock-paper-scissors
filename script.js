@@ -46,7 +46,7 @@ selectionButtons.addEventListener("click", () => {
     playerScoreInfo.textContent = "PLAYER: 0"
     computerScoreInfo.textContent = "COMPUTER: 0"
     centralText.textContent = "VS";
-    centralText.setAttribute("style", "font-size: 300px; color: #6da4a9;");
+    centralText.setAttribute("style", "font-size: 250px; color: #6da4a9;");
     playerHand.setAttribute("style", "visibility: visible;");
 });
 
@@ -62,8 +62,8 @@ let computerScore = 0;
 let roundCount = 0;
 
 // Temporary dispatchEvent to preview game
-let clickEvent = new MouseEvent("click");
-playButton.dispatchEvent(clickEvent);
+// let clickEvent = new MouseEvent("click");
+// let mouseoverEvent = new MouseEvent("mouseover");
 
-let mouseoverEvent = new MouseEvent("mouseover");
-selectionButtons.dispatchEvent(mouseoverEvent);
+// playButton.dispatchEvent(clickEvent);
+// selectionButtons.dispatchEvent(mouseoverEvent);
