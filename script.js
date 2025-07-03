@@ -20,6 +20,9 @@ const computerHandSpace = document.querySelector("#hand-right-space");
 const fightButton = document.querySelector("#fight-button");
 fightButton.remove();
 
+const nextRoundButton = document.querySelector("#next-round-button");
+nextRoundButton.remove();
+
 const centralText = document.createElement("div");
 centralText.setAttribute("id", "central-text");
 centralText.textContent = "MAKE YOUR CHOICE!";
@@ -33,6 +36,7 @@ let computerChoice;
 const showPreGameInfo = () => {
     playButton.addEventListener("click", () => {
         menu.remove()
+        roundInfo.textContent = `ROUND ${roundCount}`;
         roundInfo.setAttribute("style", "visibility: visible;");
         battleground.insertBefore(centralText, computerHandSpace);
         battleButtons.setAttribute("style", "visibility: visible;");
@@ -120,7 +124,10 @@ const startFight = () => {
         showComputerChoice(computerChoice);
         getResult(playerChoice, computerChoice);
         roundCount += 1;
-        updateGameInfo();
+        updateScoreInfo();
+        fightButton.remove();
+        selectionButtons.remove();
+        battleButtons.appendChild(nextRoundButton);
     });
 };
 
@@ -128,8 +135,7 @@ const showResultMessage = (message) => {
     gameResultMessage.textContent = message;
 };
 
-const updateGameInfo = () => {
-    roundInfo.textContent = `ROUND ${roundCount}`;
+const updateScoreInfo = () => {
     playerScoreInfo.textContent = `PLAYER: ${playerScore}`;
     computerScoreInfo.textContent = `COMPUTER: ${computerScore}`;
 };
@@ -138,7 +144,7 @@ showPreGameInfo();
 
 showGameInfo();
 
-updateGameInfo();
+updateScoreInfo();
 
 getPlayerChoice();
 startFight();
@@ -148,6 +154,6 @@ startFight();
 let clickEvent = new MouseEvent("click");
 
 
-// selectionButtons.dispatchEvent(clickEvent);
-// playButton.dispatchEvent(clickEvent);
+selectionButtons.dispatchEvent(clickEvent);
+playButton.dispatchEvent(clickEvent);
 // fightButton.dispatchEvent(clickEvent);
