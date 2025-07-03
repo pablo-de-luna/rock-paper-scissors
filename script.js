@@ -2,7 +2,7 @@
 
 const menu = document.querySelector("#menu");
 const playButton = document.querySelector("#play-button");
-const roundButtons = document.querySelector("#round-buttons");
+const roundNumberButtons = document.querySelector("#round-buttons");
 const battleground = document.querySelector("#battleground");
 const roundInfo = document.querySelector("#round-info");
 const playerScoreInfo = document.querySelector("#player-score");
@@ -67,8 +67,8 @@ const showPlayerChoice = () => {
 };
 
 const getComputerChoice = () => {
-    const computerChoices = ["rock", "paper", "scissors"];
-    return computerChoices[Math.floor(Math.random() * 3)];
+    const computerChoice = ["rock", "paper", "scissors"];
+    return computerChoice[Math.floor(Math.random() * 3)];
 };
 
 const showComputerChoice = (choice) => {
@@ -85,6 +85,27 @@ const showComputerChoice = (choice) => {
     }
 
     computerHand.setAttribute("style", "visibility: visible;");
+};
+
+// if (humanChoice === computerChoice) {
+// console.log('It\'s a DRAW');
+// return;
+// }
+
+// if (
+// (humanChoice === 'rock' && computerChoice === 'scissors')
+// || (humanChoice === 'paper' && computerChoice === 'rock')
+// || (humanChoice === 'scissors' && computerChoice === 'paper')
+// ) {
+// console.log(`You WIN!, ${humanChoice} beat ${computerChoice}`);
+// humanScore += 1;
+// } else {
+// console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
+// computerScore += 1;
+// }
+
+const getWinner = () => {
+
 };
 
 showPreGameInfo();
