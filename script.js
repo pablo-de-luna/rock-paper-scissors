@@ -7,25 +7,28 @@ const battleground = document.querySelector("#battleground");
 const roundInfo = document.querySelector("#round-info");
 const playerScoreInfo = document.querySelector("#player-score");
 const computerScoreInfo = document.querySelector("#computer-score");
+const gameResultMessage = document.querySelector("#game-result-text");
 const rockButton = document.querySelector("#rock-button");
 const paperButton = document.querySelector("#paper-button");
 const scissorsButton = document.querySelector("#scissors-button");
 const battleButtons = document.querySelector("#battle-buttons");
 const selectionButtons = document.querySelector("#selection-buttons");
-const fightButton = document.querySelector("#fight-button");
 const playerHand = document.querySelector("#hand-left-space > img")
 const computerHand = document.querySelector("#hand-right-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
+
+const fightButton = document.querySelector("#fight-button");
+fightButton.remove();
+
+const centralText = document.createElement("div");
+centralText.setAttribute("id", "central-text");
+centralText.textContent = "MAKE YOUR CHOICE!";
 
 let playerScore = 0;
 let computerScore = 0;
 let roundCount = 1;
 let playerChoice;
 let computerChoice;
-
-const centralText = document.createElement("div");
-centralText.setAttribute("id", "central-text");
-centralText.textContent = "MAKE YOUR CHOICE!";
 
 const showPreGameInfo = () => {
     playButton.addEventListener("click", () => {
@@ -44,13 +47,6 @@ const showGameInfo = () => {
         centralText.setAttribute("style", "font-size: 200px; color: #6da4a9;");
     });
 };
-
-// fightButton.addEventListener("click", () => {
-//     roundInfo.setAttribute(
-//         "style", "color:rgb(109, 169, 109); transition: all 2s; font-size: 50px;"
-//     )
-//     roundInfo.textContent = "YOU WIN!";
-// });
 
 const getPlayerChoice = () => {
     selectionButtons.addEventListener("click", (event) => {
@@ -72,6 +68,7 @@ const getPlayerChoice = () => {
         }
 
         playerHand.setAttribute("style", "visibility: visible;");
+        battleButtons.appendChild(fightButton);
     });
 };
 
@@ -96,9 +93,10 @@ const showComputerChoice = (choice) => {
     computerHand.setAttribute("style", "visibility: visible;");
 };
 
-const getWinner = (playerSelection, computerSelection) => {
+const getResult = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
-        console.log('It\'s a DRAW');
+        showResultMessage('It\'s a DRAW');
+        gameResultMessage.setAttribute("style", "color:rgb(134, 132, 132)");
         return;
     }
     if (
@@ -106,10 +104,12 @@ const getWinner = (playerSelection, computerSelection) => {
     || (playerSelection === 'paper' && computerSelection === 'rock')
     || (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
-    console.log("You WIN!");
+    showResultMessage("You WIN!");
+    gameResultMessage.setAttribute("style", "color:rgb(117, 153, 66)");
     playerScore += 1;
     } else {
-    console.log("You LOSE!");
+    showResultMessage("You LOSE!");
+    gameResultMessage.setAttribute("style", "color: #bd4949");
     computerScore += 1;
     }
 };
@@ -118,9 +118,14 @@ const startFight = () => {
     fightButton.addEventListener("click", () => {
         computerChoice = getComputerChoice();
         showComputerChoice(computerChoice);
-        getWinner(playerChoice, computerChoice);
+        getResult(playerChoice, computerChoice);
+        roundCount += 1;
         updateGameInfo();
     });
+};
+
+const showResultMessage = (message) => {
+    gameResultMessage.textContent = message;
 };
 
 const updateGameInfo = () => {
@@ -128,7 +133,6 @@ const updateGameInfo = () => {
     playerScoreInfo.textContent = `PLAYER: ${playerScore}`;
     computerScoreInfo.textContent = `COMPUTER: ${computerScore}`;
 };
-
 
 showPreGameInfo();
 
@@ -140,10 +144,10 @@ getPlayerChoice();
 startFight();
 
 
-
 // Temporary dispatchEvent to preview game
 let clickEvent = new MouseEvent("click");
 
 
 // selectionButtons.dispatchEvent(clickEvent);
 // playButton.dispatchEvent(clickEvent);
+// fightButton.dispatchEvent(clickEvent);

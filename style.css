@@ -19,7 +19,7 @@ body, button {
 #title-text {
     display: flex;
     justify-content: center;
-    margin: 10dvh auto 0;
+    margin: 6dvh auto 0;
     max-width: 70vw;
 }
 
@@ -82,10 +82,17 @@ body, button {
     justify-content: center;
 }
 
+#battle-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 #selection-buttons {
     margin-top: 0px;
     display: flex;
     height: 80px;
+    max-width: 550px;
     justify-content: center;
 }
 
@@ -139,11 +146,13 @@ body, button {
 #battle-buttons {
     visibility: hidden;
     text-align: center;
+    max-width: 800px;
+    margin: auto;
 }
 
 #fight-button {
     margin: 0px 0 20px;
-    width: 520px;
+    min-width: 520px;
     height: 70px;
     font-size: 45px;
     background-color: rgb(202, 49, 49);
@@ -188,6 +197,13 @@ body, button {
     visibility: hidden;
     font-size: 1.1em;
     color: #9a9180;
+}
+
+#game-result-text {
+    height: 100px;
+    margin-bottom: -100px;
+    font-size: 3em;
+    text-align: center;
 }
 
 
