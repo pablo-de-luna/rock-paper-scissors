@@ -17,6 +17,10 @@ const playerHand = document.querySelector("#hand-left-space > img")
 const computerHand = document.querySelector("#hand-right-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
 
+let playerScore = 0;
+let computerScore = 0;
+let roundCount = 0;
+
 const centralText = document.createElement("div");
 centralText.setAttribute("id", "central-text");
 centralText.textContent = "MAKE YOUR CHOICE!";
@@ -32,8 +36,8 @@ const showPreGameInfo = () => {
 
 const showGameInfo = () => {
     selectionButtons.addEventListener("click", () => {
-        playerScoreInfo.textContent = "PLAYER: 0"
-        computerScoreInfo.textContent = "COMPUTER: 0"
+        playerScoreInfo.textContent = `PLAYER: ${playerScore}`;
+        computerScoreInfo.textContent = `COMPUTER: ${computerScore}`;
         centralText.textContent = "VS";
         centralText.setAttribute("style", "font-size: 200px; color: #6da4a9;");
     });
@@ -48,7 +52,7 @@ const showGameInfo = () => {
 
 let playerChoice = "noChoice";
 
-const showPlayerChoice = () => {
+const getPlayerChoice = () => {
     selectionButtons.addEventListener("click", (event) => {
         let targetButton = event.target;
 
@@ -92,37 +96,37 @@ const showComputerChoice = (choice) => {
     computerHand.setAttribute("style", "visibility: visible;");
 };
 
-// if (humanChoice === computerChoice) {
-// console.log('It\'s a DRAW');
-// return;
-// }
-
-// if (
-// (humanChoice === 'rock' && computerChoice === 'scissors')
-// || (humanChoice === 'paper' && computerChoice === 'rock')
-// || (humanChoice === 'scissors' && computerChoice === 'paper')
-// ) {
-// console.log(`You WIN!, ${humanChoice} beat ${computerChoice}`);
-// humanScore += 1;
-// } else {
-// console.log(`You LOSE!, ${computerChoice} beat ${humanChoice}`);
-// computerScore += 1;
-// }
-
-const getWinner = () => {
-
-};
-
 showPreGameInfo();
 showGameInfo();
 
-showPlayerChoice();
+getPlayerChoice();
 
 const computerChoice = getComputerChoice();
+
+const getWinner = () => {
+    if (playerChoice === computerChoice) {
+        console.log('It\'s a DRAW');
+        return;
+    }
+    if (
+    (playerChoice === 'rock' && computerChoice === 'scissors')
+    || (playerChoice === 'paper' && computerChoice === 'rock')
+    || (playerChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+    console.log("You WIN!");
+    playerScore += 1;
+    } else {
+    console.log("You LOSE!");
+    computerScore += 1;
+    }
+};
 
 const startFight = () => {
     fightButton.addEventListener("click", () => {
         showComputerChoice(computerChoice);
+        getWinner();
+        playerScoreInfo.textContent = `PLAYER: ${playerScore}`;
+        computerScoreInfo.textContent = `COMPUTER: ${computerScore}`;
     });
 };
 
@@ -130,11 +134,6 @@ startFight();
 
 
 
-
-const numberOfRounds = 5;
-let playerScore = 0;
-let computerScore = 0;
-let roundCount = 0;
 
 // Temporary dispatchEvent to preview game
 let clickEvent = new MouseEvent("click");
