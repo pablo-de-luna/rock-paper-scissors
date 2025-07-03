@@ -132,6 +132,7 @@ const startFight = () => {
 };
 
 const showResultMessage = (message) => {
+    gameResultMessage.setAttribute("style", "visibility: visible;");
     gameResultMessage.textContent = message;
 };
 
@@ -140,20 +141,28 @@ const updateScoreInfo = () => {
     computerScoreInfo.textContent = `COMPUTER: ${computerScore}`;
 };
 
+const startNextRound = () => {
+    nextRoundButton.addEventListener("click", () => {
+        roundInfo.textContent = `ROUND ${roundCount}`;
+        nextRoundButton.remove();
+        gameResultMessage.setAttribute("style", "visibility: hidden;");
+        battleButtons.appendChild(selectionButtons);
+        battleButtons.appendChild(fightButton);
+    });
+};
+
 showPreGameInfo();
-
 showGameInfo();
-
 updateScoreInfo();
-
 getPlayerChoice();
 startFight();
+startNextRound();
 
 
 // Temporary dispatchEvent to preview game
 let clickEvent = new MouseEvent("click");
 
 
-selectionButtons.dispatchEvent(clickEvent);
-playButton.dispatchEvent(clickEvent);
+// selectionButtons.dispatchEvent(clickEvent);
+// playButton.dispatchEvent(clickEvent);
 // fightButton.dispatchEvent(clickEvent);
