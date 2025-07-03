@@ -119,25 +119,31 @@ const startFight = () => {
         computerChoice = getComputerChoice();
         showComputerChoice(computerChoice);
         getWinner(playerChoice, computerChoice);
+        updateGameInfo();
     });
 };
 
+const updateGameInfo = () => {
+    roundInfo.textContent = `ROUND ${roundCount}`;
+    playerScoreInfo.textContent = `PLAYER: ${playerScore}`;
+    computerScoreInfo.textContent = `COMPUTER: ${computerScore}`;
+};
+
+
 showPreGameInfo();
+
 showGameInfo();
 
+updateGameInfo();
+
 getPlayerChoice();
-
 startFight();
-
-roundInfo.textContent = `ROUND ${roundCount}`;
-playerScoreInfo.textContent = `PLAYER: ${playerScore}`;
-computerScoreInfo.textContent = `COMPUTER: ${computerScore}`;
-
 
 
 
 // Temporary dispatchEvent to preview game
 let clickEvent = new MouseEvent("click");
 
-playButton.dispatchEvent(clickEvent);
-selectionButtons.dispatchEvent(clickEvent);
+
+// selectionButtons.dispatchEvent(clickEvent);
+// playButton.dispatchEvent(clickEvent);
