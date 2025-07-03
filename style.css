@@ -179,11 +179,13 @@ body, button {
 }
 
 #round-info {
+    visibility: hidden;
     font-size: 2em;
     color: #7a6e60;
 }
 
 .score-info-style {
+    visibility: hidden;
     font-size: 1.1em;
     color: #9a9180;
 }
