@@ -46,6 +46,8 @@ const showGameInfo = () => {
 //     roundInfo.textContent = "YOU WIN!";
 // });
 
+let playerChoice = "noChoice";
+
 const showPlayerChoice = () => {
     selectionButtons.addEventListener("click", (event) => {
         let targetButton = event.target;
@@ -53,22 +55,25 @@ const showPlayerChoice = () => {
         switch(targetButton.id) {
             case "rock-button":
             playerHand.src = "./assets/images/rock-hand.png";
+            playerChoice = "rock";
             break;
             case "paper-button":
             playerHand.src = "./assets/images/paper-hand.png";
+            playerChoice = "paper";
             break;
             case "scissors-button":
             playerHand.src = "./assets/images/scissors-hand.png";
+            playerChoice = "scissors";
             break;
         }
-    
+
         playerHand.setAttribute("style", "visibility: visible;");
     });
 };
 
 const getComputerChoice = () => {
-    const computerChoice = ["rock", "paper", "scissors"];
-    return computerChoice[Math.floor(Math.random() * 3)];
+    const choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * 3)];
 };
 
 const showComputerChoice = (choice) => {
@@ -134,5 +139,5 @@ let roundCount = 0;
 // Temporary dispatchEvent to preview game
 let clickEvent = new MouseEvent("click");
 
-// playButton.dispatchEvent(clickEvent);
-// selectionButtons.dispatchEvent(clickEvent);
+playButton.dispatchEvent(clickEvent);
+selectionButtons.dispatchEvent(clickEvent);
