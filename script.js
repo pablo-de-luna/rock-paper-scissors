@@ -14,55 +14,96 @@ const battleButtons = document.querySelector("#battle-buttons");
 const selectionButtons = document.querySelector("#selection-buttons");
 const fightButton = document.querySelector("#fight-button");
 const playerHand = document.querySelector("#hand-left-space > img")
+const computerHand = document.querySelector("#hand-right-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
 
 const centralText = document.createElement("div");
 centralText.setAttribute("id", "central-text");
 centralText.textContent = "MAKE YOUR CHOICE!";
 
-playButton.addEventListener("click", () => {
-    menu.remove()
-    battleground.insertBefore(centralText, computerHandSpace);
-    battleButtons.setAttribute("style", "visibility: visible;");
-    roundInfo.textContent = "ROUND 1";
-});
+const showPreGameInfo = () => {
+    playButton.addEventListener("click", () => {
+        menu.remove()
+        battleground.insertBefore(centralText, computerHandSpace);
+        battleButtons.setAttribute("style", "visibility: visible;");
+        roundInfo.textContent = "ROUND 1";
+    });
+};
 
-selectionButtons.addEventListener("click", (event) => {
-    let targetButton = event.target;
+const showGameInfo = () => {
+    selectionButtons.addEventListener("click", () => {
+        playerScoreInfo.textContent = "PLAYER: 0"
+        computerScoreInfo.textContent = "COMPUTER: 0"
+        centralText.textContent = "VS";
+        centralText.setAttribute("style", "font-size: 200px; color: #6da4a9;");
+    });
+};
 
-    switch(targetButton.id) {
-        case "rock-button":
-           playerHand.src = "./assets/images/rock-hand.png"
-           break;
-        case "paper-button":
-           playerHand.src = "./assets/images/paper-hand.png"
-           break;
-        case "scissors-button":
-           playerHand.src = "./assets/images/scissors-hand.png"
-           break;
-    }
-});
+// fightButton.addEventListener("click", () => {
+//     roundInfo.setAttribute(
+//         "style", "color:rgb(109, 169, 109); transition: all 2s; font-size: 50px;"
+//     )
+//     roundInfo.textContent = "YOU WIN!";
+// });
 
-selectionButtons.addEventListener("click", () => {
-    playerScoreInfo.textContent = "PLAYER: 0"
-    computerScoreInfo.textContent = "COMPUTER: 0"
-    centralText.textContent = "VS";
-    centralText.setAttribute("style", "font-size: 200px; color: #6da4a9;");
-    playerHand.setAttribute("style", "visibility: visible;");
-});
+const showPlayerChoice = () => {
+    selectionButtons.addEventListener("click", (event) => {
+        let targetButton = event.target;
 
-fightButton.addEventListener("click", () => {
-    centralText.setAttribute(
-        "style", "transition: all 2s; font-size: 100px; margin: 0 -250px;"
-    )
-    centralText.textContent = "YOU LOSE";
-});
-
-const computerChoices = ["rock", "paper", "scissors"];
+        switch(targetButton.id) {
+            case "rock-button":
+            playerHand.src = "./assets/images/rock-hand.png";
+            break;
+            case "paper-button":
+            playerHand.src = "./assets/images/paper-hand.png";
+            break;
+            case "scissors-button":
+            playerHand.src = "./assets/images/scissors-hand.png";
+            break;
+        }
+    
+        playerHand.setAttribute("style", "visibility: visible;");
+    });
+};
 
 const getComputerChoice = () => {
+    const computerChoices = ["rock", "paper", "scissors"];
     return computerChoices[Math.floor(Math.random() * 3)];
 };
+
+const showComputerChoice = (choice) => {
+    switch(choice) {
+        case "rock":
+            computerHand.src = "./assets/images/rock-hand.png";
+            break;
+        case "paper":
+            computerHand.src = "./assets/images/paper-hand.png";
+            break;
+        case "scissors":
+            computerHand.src = "./assets/images/scissors-hand.png";
+            break;
+    }
+
+    computerHand.setAttribute("style", "visibility: visible;");
+};
+
+showPreGameInfo();
+showGameInfo();
+
+showPlayerChoice();
+
+const computerChoice = getComputerChoice();
+
+const startFight = () => {
+    fightButton.addEventListener("click", () => {
+        showComputerChoice(computerChoice);
+    });
+};
+
+startFight();
+
+
+
 
 const numberOfRounds = 5;
 let playerScore = 0;
@@ -72,5 +113,5 @@ let roundCount = 0;
 // Temporary dispatchEvent to preview game
 let clickEvent = new MouseEvent("click");
 
-playButton.dispatchEvent(clickEvent);
-selectionButtons.dispatchEvent(clickEvent);
+// playButton.dispatchEvent(clickEvent);
+// selectionButtons.dispatchEvent(clickEvent);
