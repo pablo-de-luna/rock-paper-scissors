@@ -2,6 +2,7 @@
 
 const menu = document.querySelector("#menu");
 const playButton = document.querySelector("#play-button");
+const playButtonRoundText = document.querySelector("#round-play-text");
 const roundNumberButtons = document.querySelector("#round-buttons");
 const battleground = document.querySelector("#battleground");
 const roundInfo = document.querySelector("#round-info");
@@ -27,11 +28,32 @@ const centralText = document.createElement("div");
 centralText.setAttribute("id", "central-text");
 centralText.textContent = "MAKE YOUR CHOICE!";
 
+let roundNumber = 3;
 let playerScore = 0;
 let computerScore = 0;
 let roundCount = 1;
 let playerChoice;
 let computerChoice;
+
+const getNumberOfRounds = () => {
+    roundNumberButtons.addEventListener("click", (event) => {
+        let targetButton = event.target;
+
+        switch(targetButton.textContent) {
+            case "3 ROUNDS":
+                roundNumber = 3;
+                break;
+            case "5 ROUNDS":
+                roundNumber = 5;
+                break;
+            case "10 ROUNDS":
+                roundNumber = 10;
+                break;
+        }
+
+        playButtonRoundText.textContent = `${roundNumber} ROUNDS`;
+    });
+};
 
 const showPreGameInfo = () => {
     playButton.addEventListener("click", () => {
@@ -151,6 +173,7 @@ const startNextRound = () => {
     });
 };
 
+getNumberOfRounds();
 showPreGameInfo();
 showGameInfo();
 updateScoreInfo();

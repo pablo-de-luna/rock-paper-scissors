@@ -96,12 +96,17 @@ body, button {
     justify-content: center;
 }
 
+#round-play-text {
+    margin-left: 10px;
+    color: #ab5151;
+}
+
 #play-button {
     margin: 70px 0 30px;
     width: 520px;
     height: 70px;
-    font-size: 40px;
-    color: rgb(55, 141, 182);
+    font-size: 30px;
+    color: rgb(55, 146, 182);
 }
 
 #play-button:hover {
