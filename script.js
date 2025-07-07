@@ -126,30 +126,55 @@ const getResult = (playerSelection, computerSelection) => {
         return;
     }
     if (
-    (playerSelection === 'rock' && computerSelection === 'scissors')
-    || (playerSelection === 'paper' && computerSelection === 'rock')
-    || (playerSelection === 'scissors' && computerSelection === 'paper')
+        (playerSelection === 'rock' && computerSelection === 'scissors')
+        || (playerSelection === 'paper' && computerSelection === 'rock')
+        || (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
-    showResultMessage("You WIN!");
-    gameResultMessage.setAttribute("style", "color:rgb(117, 153, 66)");
-    playerScore += 1;
+        showResultMessage("You WIN!");
+        gameResultMessage.setAttribute("style", "color:rgb(117, 153, 66)");
+        playerScore += 1;
     } else {
-    showResultMessage("You LOSE!");
-    gameResultMessage.setAttribute("style", "color: #bd4949");
-    computerScore += 1;
+        showResultMessage("You LOSE!");
+        gameResultMessage.setAttribute("style", "color: #bd4949");
+        computerScore += 1;
     }
 };
+
+const getFinalResult = () => {
+    gameResultMessage.setAttribute("style", "font-size: 5em; visibility: visible;")
+
+    if (playerScore === computerScore) {
+        gameResultMessage.textContent = "DRAW!"
+        gameResultMessage.setAttribute("style", "color: grey;")
+        return;
+    }
+    if (playerScore > computerScore) {
+        gameResultMessage.textContent = "VICTORY!"
+        gameResultMessage.setAttribute("style", "color: green;")
+    } else {
+        gameResultMessage.textContent = "DEFEAT!"
+        gameResultMessage.setAttribute("style", "color: red;")
+    }
+}
 
 const startFight = () => {
     fightButton.addEventListener("click", () => {
         computerChoice = getComputerChoice();
         showComputerChoice(computerChoice);
+
         getResult(playerChoice, computerChoice);
-        roundCount += 1;
+        
+        roundCount += 1;    
         updateScoreInfo();
+        
         fightButton.remove();
         selectionButtons.remove();
         battleButtons.appendChild(nextRoundButton);
+        
+        if (roundCount > roundNumber) {
+            getFinalResult();
+            battleButtons.remove();
+        }
     });
 };
 
@@ -173,19 +198,24 @@ const startNextRound = () => {
     });
 };
 
+const playGame = () => {
+
+        showPreGameInfo();
+        showGameInfo();
+        updateScoreInfo();
+        getPlayerChoice();
+        startFight();
+        startNextRound();
+    };
+    
 getNumberOfRounds();
-showPreGameInfo();
-showGameInfo();
-updateScoreInfo();
-getPlayerChoice();
-startFight();
-startNextRound();
+playGame();
 
 
 // Temporary dispatchEvent to preview game
 let clickEvent = new MouseEvent("click");
 
 
-// selectionButtons.dispatchEvent(clickEvent);
 // playButton.dispatchEvent(clickEvent);
+// selectionButtons.dispatchEvent(clickEvent);
 // fightButton.dispatchEvent(clickEvent);
