@@ -101,6 +101,10 @@ body, button {
     color: #ab5151;
 }
 
+#play-button:hover #round-play-text {
+    color: rgb(44, 85, 142);
+}
+
 #play-button {
     margin: 70px 0 30px;
     width: 520px;
