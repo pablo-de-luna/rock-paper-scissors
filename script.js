@@ -17,12 +17,18 @@ const selectionButtons = document.querySelector("#selection-buttons");
 const playerHand = document.querySelector("#hand-left-space > img")
 const computerHand = document.querySelector("#hand-right-space > img")
 const computerHandSpace = document.querySelector("#hand-right-space");
+const resetGameButton = document.querySelector("#reset");
 
 const fightButton = document.querySelector("#fight-button");
 fightButton.remove();
 
 const nextRoundButton = document.querySelector("#next-round-button");
 nextRoundButton.remove();
+
+const newGameButton = document.createElement("button");
+newGameButton.setAttribute("id", "new-game-button");
+newGameButton.textContent = "START NEW GAME";
+newGameButton.remove();
 
 const centralText = document.createElement("div");
 centralText.setAttribute("id", "central-text");
@@ -122,7 +128,7 @@ const showComputerChoice = (choice) => {
 const getResult = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
         showResultMessage('It\'s a DRAW');
-        gameResultMessage.setAttribute("style", "color:rgb(134, 132, 132)");
+        gameResultMessage.setAttribute("style", "color: #868484");
         return;
     }
     if (
@@ -131,7 +137,7 @@ const getResult = (playerSelection, computerSelection) => {
         || (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
         showResultMessage("You WIN!");
-        gameResultMessage.setAttribute("style", "color:rgb(117, 153, 66)");
+        gameResultMessage.setAttribute("style", "color: #759942");
         playerScore += 1;
     } else {
         showResultMessage("You LOSE!");
@@ -141,19 +147,19 @@ const getResult = (playerSelection, computerSelection) => {
 };
 
 const getFinalResult = () => {
-    gameResultMessage.setAttribute("style", "font-size: 5em; visibility: visible;")
+    gameResultMessage.setAttribute("style", "visibility: visible;")
 
     if (playerScore === computerScore) {
         gameResultMessage.textContent = "DRAW!"
-        gameResultMessage.setAttribute("style", "color: grey;")
+        gameResultMessage.setAttribute("style", "color: #868484;")
         return;
     }
     if (playerScore > computerScore) {
         gameResultMessage.textContent = "VICTORY!"
-        gameResultMessage.setAttribute("style", "color: green;")
+        gameResultMessage.setAttribute("style", "color: #759942;")
     } else {
         gameResultMessage.textContent = "DEFEAT!"
-        gameResultMessage.setAttribute("style", "color: red;")
+        gameResultMessage.setAttribute("style", "color: #bd4949;")
     }
 }
 
@@ -172,11 +178,18 @@ const startFight = () => {
         battleButtons.appendChild(nextRoundButton);
         
         if (roundCount > roundNumber) {
-            getFinalResult();
-            battleButtons.remove();
+            endGame();
         }
     });
 };
+
+const endGame = () => {
+    getFinalResult();
+    selectionButtons.remove();
+    fightButton.remove();
+    nextRoundButton.remove();
+    battleButtons.appendChild(newGameButton);
+}
 
 const showResultMessage = (message) => {
     gameResultMessage.setAttribute("style", "visibility: visible;");
@@ -198,6 +211,12 @@ const startNextRound = () => {
     });
 };
 
+const resetGame = () => {
+    newGameButton.addEventListener("click", () => {
+        location.reload();
+    });
+}
+
 const playGame = () => {
 
         showPreGameInfo();
@@ -210,6 +229,9 @@ const playGame = () => {
     
 getNumberOfRounds();
 playGame();
+resetGame();
+
+
 
 
 // Temporary dispatchEvent to preview game
