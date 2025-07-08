@@ -206,6 +206,7 @@ const startNextRound = () => {
         roundInfo.textContent = `ROUND ${roundCount}`;
         nextRoundButton.remove();
         gameResultMessage.setAttribute("style", "visibility: hidden;");
+        computerHand.setAttribute("style", "visibility: hidden;")
         battleButtons.appendChild(selectionButtons);
         battleButtons.appendChild(fightButton);
     });
@@ -216,28 +217,15 @@ const resetGame = () => {
         location.reload();
     });
 }
-
-const playGame = () => {
-
-        showPreGameInfo();
-        showGameInfo();
-        updateScoreInfo();
-        getPlayerChoice();
-        startFight();
-        startNextRound();
-    };
     
 getNumberOfRounds();
-playGame();
+
+showPreGameInfo();
+showGameInfo();
+updateScoreInfo();
+
+getPlayerChoice();
+startFight();
+startNextRound();
+
 resetGame();
-
-
-
-
-// Temporary dispatchEvent to preview game
-let clickEvent = new MouseEvent("click");
-
-
-// playButton.dispatchEvent(clickEvent);
-// selectionButtons.dispatchEvent(clickEvent);
-// fightButton.dispatchEvent(clickEvent);
