@@ -82,6 +82,10 @@ body, button {
     justify-content: center;
 }
 
+#round-buttons button {
+    font-size: 1em;
+}
+
 #battle-buttons {
     display: flex;
     justify-content: center;

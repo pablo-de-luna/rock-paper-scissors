@@ -189,7 +189,7 @@ const endGame = () => {
     fightButton.remove();
     nextRoundButton.remove();
     battleButtons.appendChild(newGameButton);
-}
+} 
 
 const showResultMessage = (message) => {
     gameResultMessage.setAttribute("style", "visibility: visible;");
@@ -229,3 +229,4 @@ startFight();
 startNextRound();
 
 resetGame();
+
